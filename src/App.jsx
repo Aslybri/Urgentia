@@ -12,6 +12,21 @@ function App() {
   const [otroSeleccionado, setOtroSeleccionado] = useState(false);
   const [otraEnfermedad, setOtraEnfermedad] = useState("");
 
+  const [otroAntecedente, setOtroAntecedente] = useState(false);
+  const [otroAntecedenteTexto, setOtroAntecedenteTexto] = useState("");
+
+  const [otraAlergiaAlimentaria, setOtraAlergiaAlimentaria] = useState(false);
+  const [alergiaAlimentariaTexto, setAlergiaAlimentariaTexto] = useState("");
+
+  const [otraAlergiaMedicamento, setOtraAlergiaMedicamento] = useState(false);
+  const [alergiaMedicamentoTexto, setAlergiaMedicamentoTexto] = useState("");
+
+  const [otraAlergia, setOtraAlergia] = useState(false);
+  const [otraAlergiaTexto, setOtraAlergiaTexto] = useState("");
+
+  const [otroMedicamento, setOtroMedicamento] = useState(false);
+  const [otroMedicamentoTexto, setOtroMedicamentoTexto] = useState("");
+
   const antecedentes = [
     "Anticoagulantes",
     "Inmunocomprometido",
@@ -586,11 +601,30 @@ function App() {
         "Otro"
       ].map((item) => (
         <label className="check-option" key={item}>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              if (item === "Otro") {
+                setOtroAntecedente(e.target.checked);
+                if (!e.target.checked) setOtroAntecedenteTexto("");
+              }
+            }}
+          />
           {item}
         </label>
       ))}
 
+      {otroAntecedente && (
+        <>
+          <label>Otro antecedente</label>
+          <input
+            type="text"
+            placeholder="Ingrese otro antecedente"
+            value={otroAntecedenteTexto}
+            onChange={(e) => setOtroAntecedenteTexto(e.target.value)}
+          />
+        </>
+      )}
       <button className="btn login" onClick={() => setPantalla("datos3")}>
         Continuar
       </button>
@@ -609,31 +643,225 @@ function App() {
     <div className="form-box">
       <label>Alergias</label>
 
-      {[
-        "Alimentaria: ____________",
-        "Medicamentos: ____________",
-        "Otros: ____________",
-        "Ninguna alergia",
-      ].map((item) => (
-        <label className="check-option" key={item}>
-          <input type="checkbox" />
-          {item}
-        </label>
-      ))}
+{[
+  "Alimentaria",
+  "Medicamentos",
+  "Otros",
+  "Ninguna alergia"
+].map((item) => (
+  <label className="check-option" key={item}>
+    <input
+      type="checkbox"
+      onChange={(e) => {
+        if (item === "Alimentaria") {
+          setOtraAlergiaAlimentaria(e.target.checked);
+          if (!e.target.checked) setAlergiaAlimentariaTexto("");
+        }
 
-      <label>Medicamentos Actuales</label>
+        if (item === "Medicamentos") {
+          setOtraAlergiaMedicamento(e.target.checked);
+          if (!e.target.checked) setAlergiaMedicamentoTexto("");
+        }
 
-      {[
-        "Insulina",
-        "Corticoides",
-        "Anticoagulantes",
-        "Otros: ____________",
-      ].map((item) => (
-        <label className="check-option" key={item}>
-          <input type="checkbox" />
-          {item}
-        </label>
-      ))}
+        if (item === "Otros") {
+          setOtraAlergia(e.target.checked);
+          if (!e.target.checked) setOtraAlergiaTexto("");
+        }
+      }}
+    />
+    {item}
+  </label>
+))}
+
+{otraAlergiaAlimentaria && (
+  <>
+    <label>¿A qué alimento es alérgico?</label>
+    <input
+      type="text"
+      placeholder="Ej: maní, mariscos, leche..."
+      value={alergiaAlimentariaTexto}
+      onChange={(e) => setAlergiaAlimentariaTexto(e.target.value)}
+    />
+  </>
+)}
+
+{otraAlergiaMedicamento && (
+  <>
+    <label>¿A qué medicamento es alérgico?</label>
+    <input
+      type="text"
+      placeholder="Ej: penicilina, ibuprofeno..."
+      value={alergiaMedicamentoTexto}
+      onChange={(e) => setAlergiaMedicamentoTexto(e.target.value)}
+    />
+  </>
+)}
+
+{otraAlergia && (
+  <>
+    <label>Otra alergia</label>
+    <input
+      type="text"
+      placeholder="Ingrese otra alergia"
+      value={otraAlergiaTexto}
+      onChange={(e) => setOtraAlergiaTexto(e.target.value)}
+    />
+  </>
+)}
+
+<label>Medicamentos Actuales</label>
+
+{[
+  "Insulina",
+  "Corticoides",
+  "Anticoagulantes",
+  "Otros"
+].map((item) => (
+  <label className="check-option" key={item}>
+    <input
+      type="checkbox"
+      onChange={(e) => {
+        if (item === "Otros") {
+          setOtroMedicamento(e.target.checked);
+          if (!e.target.checked) setOtroMedicamentoTexto("");
+        }
+      }}
+    />
+    {item}
+  </label>
+))}
+
+{otroMedicamento && (
+  <>
+    <label>Otro medicamento</label>
+    <input
+      type="text"
+      placeholder="Ingrese el medicamento"
+      value={otroMedicamentoTexto}
+      onChange={(e) => setOtroMedicamentoTexto(e.target.value)}
+    />
+  </>
+)}
+
+<label>Estado Especial</label>
+
+{["Embarazo", "Inmunosuprimido"].map((item) => (
+  <label className="check-option" key={item}>
+    <input type="checkbox" />
+    {item}
+  </label>
+))}
+
+<label>Alergias</label>
+
+{[
+  "Alimentaria",
+  "Medicamentos",
+  "Otros",
+  "Ninguna alergia"
+].map((item) => (
+  <label className="check-option" key={item}>
+    <input
+      type="checkbox"
+      onChange={(e) => {
+        if (item === "Alimentaria") {
+          setOtraAlergiaAlimentaria(e.target.checked);
+          if (!e.target.checked) setAlergiaAlimentariaTexto("");
+        }
+
+        if (item === "Medicamentos") {
+          setOtraAlergiaMedicamento(e.target.checked);
+          if (!e.target.checked) setAlergiaMedicamentoTexto("");
+        }
+
+        if (item === "Otros") {
+          setOtraAlergia(e.target.checked);
+          if (!e.target.checked) setOtraAlergiaTexto("");
+        }
+      }}
+    />
+    {item}
+  </label>
+))}
+
+{otraAlergiaAlimentaria && (
+  <>
+    <label>¿A qué alimento es alérgico?</label>
+    <input
+      type="text"
+      placeholder="Ej: maní, mariscos, leche..."
+      value={alergiaAlimentariaTexto}
+      onChange={(e) => setAlergiaAlimentariaTexto(e.target.value)}
+    />
+  </>
+)}
+
+{otraAlergiaMedicamento && (
+  <>
+    <label>¿A qué medicamento es alérgico?</label>
+    <input
+      type="text"
+      placeholder="Ej: penicilina, ibuprofeno..."
+      value={alergiaMedicamentoTexto}
+      onChange={(e) => setAlergiaMedicamentoTexto(e.target.value)}
+    />
+  </>
+)}
+
+{otraAlergia && (
+  <>
+    <label>Otra alergia</label>
+    <input
+      type="text"
+      placeholder="Ingrese otra alergia"
+      value={otraAlergiaTexto}
+      onChange={(e) => setOtraAlergiaTexto(e.target.value)}
+    />
+  </>
+)}
+
+  <label>Medicamentos Actuales</label>
+
+  {[
+    "Insulina",
+    "Corticoides",
+    "Anticoagulantes",
+    "Otros"
+  ].map((item) => (
+    <label className="check-option" key={item}>
+      <input
+        type="checkbox"
+        onChange={(e) => {
+          if (item === "Otros") {
+            setOtroMedicamento(e.target.checked);
+            if (!e.target.checked) setOtroMedicamentoTexto("");
+          }
+        }}
+      />
+      {item}
+    </label>
+  ))}
+
+  {otroMedicamento && (
+    <>
+      <label>Otro medicamento</label>
+      <input
+        type="text"
+        placeholder="Ingrese el medicamento"
+        value={otroMedicamentoTexto}
+        onChange={(e) => setOtroMedicamentoTexto(e.target.value)}
+      />
+    </>
+  )}
+
+<label>Estado Especial</label>
+
+{["Embarazo", "Inmunosuprimido"].map((item) => (
+  <label className="check-option" key={item}>
+    <input type="checkbox" />
+    {item}
+  </label>
+))}
 
       <label>Estado Especial</label>
 
