@@ -8,6 +8,10 @@ function App() {
   const [banderasSeleccionadas, setBanderasSeleccionadas] = useState([]);
   const [banderaActual, setBanderaActual] = useState("");
   const [subrespuestas, setSubrespuestas] = useState({});
+  const [tipoDocumento, setTipoDocumento] = useState("");
+  const [numeroDocumento, setNumeroDocumento] = useState("");
+  const [epsSeleccionada, setEpsSeleccionada] = useState("");
+  const [tramiteSeleccionado, setTramiteSeleccionado] = useState("");
 
   const [otroSeleccionado, setOtroSeleccionado] = useState(false);
   const [otraEnfermedad, setOtraEnfermedad] = useState("");
@@ -501,7 +505,10 @@ function App() {
 
             <div className="form-box">
               <label>Tipo de documento</label>
-              <select>
+              <select
+                value={tipoDocumento}
+                onChange={(e) => setTipoDocumento(e.target.value)}
+              >
                 <option value="">Seleccione una opción</option>
                 <option value="CC">CC - Cédula de ciudadanía</option>
                 <option value="TI">TI - Tarjeta de identidad</option>
@@ -514,13 +521,18 @@ function App() {
               <input
                 type="text"
                 placeholder="Ingrese su número de documento"
+                value={numeroDocumento}
                 onChange={(e) => {
-                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                  const soloNumeros = e.target.value.replace(/[^0-9]/g, "");
+                  setNumeroDocumento(soloNumeros);
                 }}
               />
 
               <label>EPS activa actualmente</label>
-              <select>
+              <select
+                value={epsSeleccionada}
+                onChange={(e) => setEpsSeleccionada(e.target.value)}
+              >
                 <option value="">Seleccione su EPS</option>
                 <option value="Nueva EPS">Nueva EPS</option>
                 <option value="Salud Total EPS">Salud Total EPS</option>
@@ -532,7 +544,10 @@ function App() {
                 <option value="Capital Salud">Capital Salud</option>
               </select>
 
-              <button className="btn login">
+              <button
+                className="btn login"
+                onClick={() => setPantalla("submenuTramites")}
+              >
                 Continuar
               </button>
             </div>
@@ -540,6 +555,81 @@ function App() {
             <button className="back" onClick={() => setPantalla("inicio")}>
               ← Volver
             </button>
+          </>
+        )}
+        {pantalla === "submenuTramites" && (
+          <>
+            <h2 className="title title-small">¿Qué trámite necesitas?</h2>
+
+            <p className="description">
+              Selecciona una opción para recibir orientación según tu EPS.
+            </p>
+
+            <div className="submenu-grid">
+              {[
+                "Autorización de examen / procedimiento / cirugía",
+                "Autorización para valoración con especialista",
+                "Asignación de cita por consulta externa",
+                "Renovar fórmula",
+                "Vencimiento de orden para examen / procedimiento / cirugía",
+                "Vencimiento de orden para valoración con especialista",
+              ].map((item) => (
+                <button
+                  key={item}
+                  className={`submenu-btn ${
+                    tramiteSeleccionado === item ? "selected" : ""
+                  }`}
+                  onClick={() => setTramiteSeleccionado(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            {tramiteSeleccionado && (
+              <div className="selection-box">
+                <strong>EPS seleccionada:</strong> {epsSeleccionada || "No seleccionada"}
+                <br />
+                <br />
+
+                <strong>Trámite:</strong> {tramiteSeleccionado}
+                <br />
+                <br />
+
+                {tramiteSeleccionado === "Renovar fórmula" ? (
+                  <>
+                    Para renovar una fórmula, normalmente debes solicitar una{" "}
+                    <strong>cita médica</strong>.
+                  </>
+                ) : tramiteSeleccionado === "Asignación de cita por consulta externa" ? (
+                  <>
+                    Debes pedir una <strong>cita ambulatoria por consulta externa</strong>.
+                  </>
+                ) : (
+                  <>
+                    Para este trámite, debes comunicarte con las{" "}
+                    <strong>líneas de atención de tu EPS</strong> o usar sus canales
+                    virtuales.
+                  </>
+                )}
+              </div>
+            )}
+
+            <div className="buttons-secondary">
+              <button
+                className="secondary-btn"
+                onClick={() => setPantalla("tramites")}
+              >
+                ← Volver
+              </button>
+
+              <button
+                className="secondary-btn primary-next"
+                onClick={() => setPantalla("inicio")}
+              >
+                Finalizar
+              </button>
+            </div>
           </>
         )}
 
