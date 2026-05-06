@@ -5,13 +5,21 @@ body {
 }
 select {
   width: 100%;
-  padding: 14px;
+  padding: 14px 16px;
   border-radius: 14px;
   border: none;
-  background-color: #eef3ff;
+  background-color: #eaf0ff;
   color: #000;
   font-size: 1rem;
   margin-bottom: 18px;
+  outline: none;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  box-sizing: border-box;
 }
 
 select:focus {
@@ -75,6 +83,22 @@ select:focus {
   font-size: 1.2rem;
   color: white;
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+.btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+  opacity: 0.96;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .emergency {
@@ -306,11 +330,6 @@ input{
 .tramites {
   background-color: #6c63ff;
   color: white;
-  margin-top: 12px;
-}
-
-.tramites:hover {
-  background-color: #574bdb;
 }
 
 @media (max-width: 600px) {
