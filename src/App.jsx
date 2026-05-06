@@ -453,7 +453,7 @@ function App() {
 
               <button
                 className="btn tramites"
-                onClick={() => seleccionarPaciente("Tramites y fórmulas")}
+                onClick={() => setPantalla("tramites")}
               >
                 Trámites y Fórmulas
               </button>
@@ -487,6 +487,57 @@ function App() {
             </div>
 
             <button className="back" onClick={volverAInicio}>
+              ← Volver
+            </button>
+          </>
+        )}
+        {pantalla === "tramites" && (
+          <>
+            <h2 className="title title-small">Trámites y Fórmulas</h2>
+
+            <p className="description">
+              Ingresa tus datos para consultar información relacionada con trámites y fórmulas.
+            </p>
+
+            <div className="form-box">
+              <label>Tipo de documento</label>
+              <select>
+                <option value="">Seleccione una opción</option>
+                <option value="CC">CC - Cédula de ciudadanía</option>
+                <option value="TI">TI - Tarjeta de identidad</option>
+                <option value="CE">CE - Cédula de extranjería</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="RC">RC - Registro civil</option>
+              </select>
+
+              <label>Número de documento</label>
+              <input
+                type="text"
+                placeholder="Ingrese su número de documento"
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                }}
+              />
+
+              <label>EPS activa actualmente</label>
+              <select>
+                <option value="">Seleccione su EPS</option>
+                <option value="Nueva EPS">Nueva EPS</option>
+                <option value="Salud Total EPS">Salud Total EPS</option>
+                <option value="Compensar EPS">Compensar EPS</option>
+                <option value="EPS Sura">EPS Sura</option>
+                <option value="Famisanar EPS">Famisanar EPS</option>
+                <option value="Mutual Ser EPS">Mutual Ser EPS</option>
+                <option value="Coosalud EPS">Coosalud EPS</option>
+                <option value="Capital Salud">Capital Salud</option>
+              </select>
+
+              <button className="btn login">
+                Continuar
+              </button>
+            </div>
+
+            <button className="back" onClick={() => setPantalla("inicio")}>
               ← Volver
             </button>
           </>
