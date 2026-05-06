@@ -444,8 +444,18 @@ function App() {
                 Emergencia Inmediata
               </button>
 
-              <button className="btn login" onClick={() => setPantalla("login")}>
+              <button
+                className="btn login"
+                onClick={() => setPantalla("login")}
+              >
                 Iniciar Sesión / Registrarse
+              </button>
+
+              <button
+                className="btn tramites"
+                onClick={() => seleccionarPaciente("Tramites y fórmulas")}
+              >
+                Trámites y Fórmulas
               </button>
             </div>
           </>

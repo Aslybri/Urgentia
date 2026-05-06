@@ -290,6 +290,15 @@ input{
   font-size: 0.8rem;
   font-weight: bold;
 }
+.tramites {
+  background-color: #6c63ff;
+  color: white;
+  margin-top: 12px;
+}
+
+.tramites:hover {
+  background-color: #574bdb;
+}
 
 @media (max-width: 600px) {
   .card {
