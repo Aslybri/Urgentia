@@ -27,13 +27,27 @@ export const banderasPorPaciente = {
 
   Embarazada: [
     "Dolor de cabeza",
-    "Dolor abdominal",
+    "Dolor en abdomen",
     "Hemorragia vaginal",
+    "Tos con sangre",
+    "No siente al bebé",
+    "Contracciones prematuras (antes de la semana 37)",
+    "Presión alta",
+    "Visión borrosa",
+    "Zumbidos o “pitos” en los oídos",
   ],
 
   Trauma: [
-    "Herida profunda",
+    "Herida profunda o sangrado abundante ",
     "Golpe en la cabeza",
     "Posible fractura",
+    "Dificultad respiratoria",
+    "Confundido o desorientado",
+    "Dolor de pecho",
+    "Dolor de abdominal",
+    "Posible fractura o deformidad",
+    "Lesión en cuello, espalda o columna",
+    "Quemadura"
+
   ]
 };

@@ -1,5 +1,5 @@
 export const submenus = {
-
+  // Submenus generales
   "Dolor de cabeza": [
     "El dolor apareció de forma súbita",
     "Es el peor dolor de cabeza de su vida",
@@ -53,5 +53,51 @@ export const submenus = {
     "La extremidad se ve deformada",
     "No puede moverla",
     "Dolor muy intenso",
-  ]
+  ],
+
+  // EMBARAZADAS
+  "Hemorragia vaginal": [
+    "El sangrado es abundante",
+    "Tiene coágulos?",
+    "Tiene mareo o desmayo",
+    "Empapa varias toallas", //debemos de wuitar esto y mandarla a urgencias una vez de hemorrragia vaginal?
+  ],
+  "Presión alta": [
+    "Tiene dolor de cabeza intenso",
+    "Tiene visión borrosa o lucecitas",
+    "Tiene hinchazón de cara/manos",
+    "Tiene dolor fuerte en boca del estomago",
+  ],
+  "Contracciones prematuras (antes de la semana 37)": [
+    "Las contracciones son frecuentes",
+    "Tiene salida de líquido",
+  ],
+  "No siente al bebé": [
+    "Disminuyeron los movimientos",
+    "No siente al bebé hace horas",
+  ],
+  "Dolor en abdomen": [
+    "El dolor es muy intenso",
+    "Tiene vómito constante",
+    "Hay sangre en vómito o heces",
+    "Dolor en boca del estómago"
+  ],
+  // Sub menu trauma
+  "Golpe en la cabeza": [
+    "Está confundido o no responde norma",
+    "Tiene vómitos repetidos",
+    "¿Tiene dificultad para hablar o mover alguna parte del cuerpo?",
+  ],
+  "Quemadura": [
+    "¿La quemadura es en cara, cuello o genitales?",
+    "Tiene vómitos repetidos",
+    "¿Tiene dificultad para hablar o mover alguna parte del cuerpo?",
+  ],
+
+
 };
+
+
+
+
+
