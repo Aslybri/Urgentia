@@ -362,3 +362,23 @@ input{
     flex-direction: column;
   }
 }
+
+.result-advice {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #eef3ff;
+  color: #25324b;
+  line-height: 1.6;
+}
+
+.result-advice h3 {
+  margin-top: 0;
+  color: #2f66ff;
+}
+
+.result-advice .btn {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 1rem;
+}
