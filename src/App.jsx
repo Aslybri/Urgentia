@@ -15,6 +15,7 @@ import Submenu from "./pages/Urgencia/Submenu";
 
 import Tramites from "./pages/Tramites/Tramites";
 import SubmenuTramites from "./pages/Tramites/SubmenuTramites";
+import Result from "./pages/Urgencia/Result";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/tipopaciente" element={<TipoPaciente />} />
         <Route path="/banderas" element={<Banderas />} />
         <Route path="/submenu" element={<Submenu />} />
+        <Route path="/result" element={<Result />} />
 
         <Route path="/tramites" element={<Tramites />} />
         <Route path="/submenu-tramites" element={<SubmenuTramites />} />
