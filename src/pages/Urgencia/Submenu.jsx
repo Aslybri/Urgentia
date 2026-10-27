@@ -62,9 +62,9 @@ function Submenu() {
 
           <button
             className="secondary-btn primary-next"
-            onClick={() => navigate("/banderas")}
+            onClick={() => navigate("/result")}
           >
-            Guardar
+            Ver resultado
           </button>
         </div>
       </div>
